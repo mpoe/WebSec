@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 24, 2017, 10:47:12 AM
+    Author     : jacda
+*/
+body{
+    margin: 0;
+}
+
+.TopBar{
+    /* top bar specs */
+    height: 43px;
+    min-width: 100%;
+    background-color: #146eff;
+    opacity: 0.9;
+    /* top bar border */
+    border-bottom: black;
+    border-bottom-width: 2px;
+    border-width: 1px;
+    border-bottom-style: solid;
+}
+
+.TopBar_Logo{
+    /* top logo specs */
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 40px;
+    font-family: fantasy;
+    color: #fff;
+    font-size: 25px;
+    float: left;
+}
+
+.TopBar_Greet{
+    /* top greet specs */
+    line-height: 45px;
+    font-size: 12px;
+}
+
+/* Login Start */
+.TopBar_Form{
+    margin-right: 10px;
+    position: relative;
+    top: -34px;
+}
+
+.TopBar_Username{
+    float: right;
+    margin-right: 5px;
+}
+
+.TopBar_Password{
+    float: right;
+    margin-right: 5px;
+}
+
+.Login_Btn{
+    float: right;
+    
+    background-color: #1cbc28; 
+    border: none;
+    color: white;
+    padding: 1px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 3px;
+}
+/* Login END */

@@ -1,0 +1,272 @@
+/**************************************/
+/***********MAIN MENU LAYOUT***********/
+/**************************************/
+@font-face {
+	font-family: roboto;
+	src: url(../dist/fonts/Roboto-Regular.ttf);
+}
+body{
+	color: #212121;
+	font-family: roboto;
+	/*font-weight: 400;*/
+	margin: 0;
+}
+
+
+.TopBar{
+	/* top bar specs */
+	height: 43px;
+	min-width: 100%;
+	background-color: #146eff;
+	opacity: 0.9;
+	/* top bar border */
+	border-bottom: black;
+	border-bottom-width: 2px;
+	border-width: 1px;
+	border-bottom-style: solid;
+	cursor: pointer;
+}
+
+.TopBar_Logo{
+	/* top logo specs */
+	margin-left: 10px;
+	margin-right: 10px;
+	line-height: 40px;
+	font-family: fantasy;
+	color: #fff;
+	font-size: 25px;
+	float: left;
+}
+
+.TopBar_Greet{
+	/* top greet specs */
+	line-height: 45px;
+	font-size: 12px;
+}
+
+/* Login Start */
+.TopBar_Form{
+	margin-right: 10px;
+	position: relative;
+	top: -34px;
+}
+
+.TopBar_Username{
+	float: right;
+	margin-right: 5px;
+}
+
+.TopBar_Password{
+	float: right;
+	margin-right: 5px;
+}
+
+.Login_Btn{
+	float: right;
+
+	background-color: #1cbc28; 
+	border: none;
+	color: white;
+	padding: 1px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border-radius: 3px;
+}
+.logout-form{
+	margin-right: 10px;
+    position: relative;
+    top: -34px;
+}
+/* Login END */
+
+#admin-layout{
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+
+
+/*SETUP ADD admin BUTTON*/
+#lbladminAdd{
+	/*display: flex;*/
+	justify-content: space-around;
+	align-items: center;
+
+	text-align: center;
+
+	background-color: #42A5F5;
+
+	margin: 8px;
+}
+
+#lbladminAdd:hover{
+	background-color: #1976D2;
+
+}
+
+#dynamic-admin-rows :hover{
+	background: #E0E0E0;
+}
+/**************************************/
+/***********ADMINISTRATOR LAYOUT**********/
+/**************************************/
+/***********SECTION LAYOUT*************/
+#section-administrator{
+	display: flex;
+}
+
+/**************************************/
+/*******ADMINISTRATOR TABLE LAYOUT********/
+/*SETUP ADMINISTRATOR TABLE*/
+.aside-admin-content{
+	display: flex;
+	/*text-align:  center;*/
+
+	background-color:#FAFAFA;
+}
+.aside-admin-content div{
+	/*CENTERS ALL THE ITEMS IN THE TABLE*/
+	width:200px;
+	align-items: center;
+
+	padding: 4px 4px;
+
+	/*text-align:  center;*/
+}
+
+.aside-admin-content div{
+	font-size: 84%;
+	border-right: 1px solid #000;
+}
+
+.lbl-admin-avName{
+	border-left: 1px solid #000;
+}
+
+
+/*SETUP administrator NAVIGATION ADD admin*/
+#admin-icons{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	width: 100%;
+}
+
+#admin-layout{
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+
+
+/*SETUP ADD admin BUTTON*/
+#lbladminAdd{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	text-align: center;
+
+	background-color: #42A5F5;
+
+	margin: 8px;
+}
+
+#lbladminAdd:hover{
+	background-color: #1976D2;
+
+}
+
+#lbladminAdd span:last-child,
+#adminMapIcon span:last-child{
+	/*ADD MARGIN TO THE LEFT OF THE LAST FA ICON*/
+	margin-left: 6px;
+}
+
+.admin-icon{
+	width: 160px;
+	padding: 4px;
+}
+
+#article-administrator-image{
+	background-color: #2962FF;
+}
+
+/*HIDE admin ID CONTAINERS*/
+.lbl-admin-id{
+	display: none;
+}
+
+
+.pointer{
+
+	cursor: pointer;
+}
+/*ADD SEARCH LATER....*/
+
+
+
+table a{
+	text-decoration: none;
+	color:#0277BD;
+}
+table a:active{
+	color: #01579B;
+}
+
+
+table {
+	position: relative;
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: auto;
+	height: 75px;
+
+}
+
+td, th {
+	border: 5px #dddddd;
+	text-align: left;
+	padding: 5px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+.container{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	-webkit-align-content: center;
+	align-content: center;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+
+}
+
+.container-mid{
+	flex-grow: 2;
+	flex-basis: auto;
+	align-items: center;
+}
+
+.links, .centered-txt{
+	text-align: center;
+}
+
+/*Hide all ids*/
+.table-id,
+.admin_id{
+	display: none;
+}
+
+.admin-table-buttons{
+	color: #0277BD;
+	cursor: pointer;
+}
