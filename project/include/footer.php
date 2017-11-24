@@ -2,13 +2,37 @@
 	<div class="footer_logo">AvatarConnect 2017</div>
 </div>
 
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> <!-- jquery from external source might want to download! -->
+<script src="dist/jquery-3.2.1.min.js"></script>
 <script src="js/scrips.js"></script>
 
 <script>
 	$("#nav-search").keyup(function()
 	{
-		if($("#search-results").is(':empty') || $("#nav-search").val() == 0 )
+		
+		var aUserData =[];
+			$.ajax({
+				url: "api/search.php",
+				"method":"get",
+				"cache":false,
+				dataType: "json",
+				data : { searchString : $("#nav-search").val()},
+				success: function(jUserData) {
+						$("#search-results").empty();
+						for(var i = 0; i<jUserData.length;i++)
+						{
+							var sLinkBlueprint = '<a class="dropdown-item" href="user.php?id={{userid}}">{{avatarname}}</a>';
+
+							var sLinkTemplate = sLinkBlueprint;
+
+							sLinkTemplate = sLinkTemplate.replace("{{userid}}",jUserData[i].id);
+							sLinkTemplate = sLinkTemplate.replace("{{avatarname}}",jUserData[i].avatarname);
+
+							$("#search-results").append(sLinkTemplate);
+						}
+					}
+		});
+
+		if($("#search-results").is(':empty') || $("#nav-search").val().length == 0 )
 		{
 			console.log("Here");
 			$("#search-results").empty();
@@ -19,9 +43,6 @@
 
 			
 		});
-		if($("#nav-search").val().length>0){
-			$("#search-results").append('<a class="dropdown-item" href="/components/forms/">Forms</a>');
-		}
 		if(!$("#search-results").is(':empty'))
 		{
 			$("#search-results").show();

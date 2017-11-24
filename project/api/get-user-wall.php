@@ -7,7 +7,6 @@
 	$stmt->execute();
 
 
-
 	while($post = $stmt->fetchObject()){
 		$userstmt = $conn->prepare("SELECT avatarname FROM users WHERE id = $post->postedfrom");
 		$userstmt->execute();

@@ -1,7 +1,19 @@
 <?php
 
-$ajResult = json_decode('[]');
+include("../include/db.php");
 
-$sajMeeps = json_encode( $ajResult , JSON_UNESCAPED_UNICODE );
-echo $sajMeeps;
+$searchString = $_GET["searchString"];
+
+//$stmt = $conn->prepare("SELECT avatarname, id FROM users WHERE avatarname LIKE %{$searchString}%");
+//$stmt = $conn->prepare("SELECT avatarname, id FROM `users` WHERE avatarname LIKE '%big%'");
+$stmt = $conn->prepare("SELECT avatarname, id FROM `users` WHERE avatarname LIKE :ss");
+$searchString = "%".$searchString."%";
+$stmt->bindParam(':ss', $searchString, PDO::PARAM_STR);
+$stmt->execute();
+
+$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+$json=json_encode($results);
+
+echo $json;
+
 ?>

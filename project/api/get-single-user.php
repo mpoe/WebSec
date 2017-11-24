@@ -26,7 +26,7 @@ $user = $stmt->fetchObject();
 	else{
 		$friendstmt = $conn->prepare("SELECT * FROM contacts WHERE requestedto = $curUser AND requestedfrom = $uID AND reqstatusid = 5");
 		$friendstmt->execute();
-		if($friendstmt->fetchObject == null)
+		if($friendstmt->fetchObject() == null)
 		{
 			?>
 			<form action="create-friend-request.php" method="post">

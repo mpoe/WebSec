@@ -2,7 +2,7 @@
 session_start();
 
 include("include/db.php");
-include("/include/token.php");
+include("include/token.php");
 
 if(!isset( $_SESSION['UserID'])){
 	header('Location: '. "index.php");
@@ -53,10 +53,9 @@ include("include/header.php");
 		</div>
 	</div>
 </div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+<?php
+include("include/footer.php");
+?>
 
 <script type="text/javascript">
 	$( document ).ready(function() {
