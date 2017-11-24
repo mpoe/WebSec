@@ -3,6 +3,7 @@
 </div>
 
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> <!-- jquery from external source might want to download! -->
+<script src="js/scrips.js"></script>
 
 <script>
 	$("#nav-search").keyup(function()
