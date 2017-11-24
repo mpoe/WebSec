@@ -73,10 +73,10 @@ body{
     border-radius: 3px;
 }
 
-.Logout_Btn{
+/*.Logout_Btn{
     position: relative;
     top:-34px;
-}
+}*/
 /* Login END */
 
 /* Footer Start */
@@ -139,9 +139,13 @@ video#bgvid {
     padding: 1%;
     position: absolute;
     right: 10%;
-    top: 25%;
-    width: 20%;
+    top: 11%;
+    /*width: 20%;*/
     border-radius: 5px;
+}
+
+.regnow form{
+    height:auto;
 }
 
 .regnow{
@@ -167,6 +171,7 @@ video#bgvid {
     display: inline-block;
     font-size: 16px;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .Signup_image{
@@ -174,7 +179,7 @@ video#bgvid {
     background-color: #146eff; 
     border: none;
     color: white;
-    padding: 10px 25px;
+    padding:  7px 22px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -196,9 +201,9 @@ video#bgvid {
     background: rgba(255,255,255,0.9);
     padding: 2%;
     position: absolute;
-    top: 25%;
+    top: 11%;
     left: 10%;
-    height: 175px;
+    /*height: 175px;*/
     border-radius: 5px;
 }
 
@@ -207,13 +212,14 @@ video#bgvid {
 }
 
 .Signup_rules{
-    background: rgba(255,255,255,0.9);
+    margin-top: 20px;
+   /* background: rgba(255,255,255,0.9);
     padding: 1%;
     position: absolute;
     right: 10%;
     top: 65%;
     width: 20%;
-    border-radius: 5px;
+    border-radius: 5px;*/
 }
 
 .format_txt{
@@ -258,3 +264,6 @@ video#bgvid {
     border-radius: 5px;
 }
 
+button.Signup_Btn:hover{
+        background-color: #146eff;
+}

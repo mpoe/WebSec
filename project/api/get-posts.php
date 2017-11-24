@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	//session_start();
 
 	$token = $_SESSION['token'];
 	include("./include/db.php");
