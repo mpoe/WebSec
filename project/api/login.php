@@ -9,6 +9,8 @@ include('login-page-forwarding.php');
 $uEmail = $_POST['login-email']; 
 $uPassword = $_POST['login-password'];
 
+
+
 echo $uEmail  . "<br>";
 echo $uPassword  . "<br>";
 

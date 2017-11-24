@@ -31,6 +31,7 @@
                 <form class="form-inline my-2 my-lg-0" action="api/login.php" method="post"> <!-- Needs form information -->
                     <input class="form-control mr-sm-2" name="login-email" placeholder="E-mail"  tabindex="1">
                     <input class="form-control mr-sm-2" name="login-password" placeholder="Password" type="password" tabindex="2">
+                    <input type="text" name="token" hidden value="<?php echo $token; ?>">
                     <button class="btn" tabindex="3">Log in</button>
                 </form>
                 <?php
