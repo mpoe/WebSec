@@ -14,10 +14,9 @@ $password2 = $_POST['password2'];
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ //
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
-//Hardcoded for now
-$avatarname = "Hardcoded";
+$avatarname = $_POST['avatarname'];
 
-$mobile = "1234-5678";
+$mobile = $_POST['phone'];
 $files = $_FILES;
 
 $profileimg = uploadProfileImage($files);

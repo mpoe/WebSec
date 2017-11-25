@@ -9,11 +9,8 @@ include('login-page-forwarding.php');
 $uEmail = $_POST['login-email']; 
 $uPassword = $_POST['login-password'];
 
-
-
-echo $uEmail  . "<br>";
-echo $uPassword  . "<br>";
-
+$uEmail = htmlspecialchars($uEmail, ENT_QUOTES, 'UTF-8');
+$uPassword = htmlspecialchars($uPassword, ENT_QUOTES, 'UTF-8');
 
 //Initiate function 
 //Which checks the date given - as a string 

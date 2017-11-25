@@ -4,6 +4,7 @@ include("../include/db.php");
 
 //Needs to be sanitized??
 $commentdesc = $_POST['comment'];
+$commentdesc = htmlspecialchars($commentdesc, ENT_QUOTES, 'UTF-8');
 $postid = $_POST['post-id'];
 
 include("../include/token-validation.php");

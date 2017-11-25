@@ -1,5 +1,6 @@
 <?php
 	$userid = $_GET['id'];
+	$userid = htmlspecialchars($userid, ENT_QUOTES, 'UTF-8');
 	include("../include/db.php");
 
 	$stmt = $conn->prepare("SELECT * FROM post WHERE postedfrom = :userid");

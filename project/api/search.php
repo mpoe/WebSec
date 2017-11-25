@@ -3,6 +3,7 @@
 include("../include/db.php");
 
 $searchString = $_GET["searchString"];
+$searchString = htmlspecialchars($searchString, ENT_QUOTES, 'UTF-8');
 
 //$stmt = $conn->prepare("SELECT avatarname, id FROM users WHERE avatarname LIKE %{$searchString}%");
 //$stmt = $conn->prepare("SELECT avatarname, id FROM `users` WHERE avatarname LIKE '%big%'");

@@ -6,6 +6,7 @@
 	//Session token.
 	
 	$uToAdd = $_POST['id'];
+	$uToAdd = htmlspecialchars($uToAdd, ENT_QUOTES, 'UTF-8');
 	$uFrom = $_SESSION['UserID'];
 
 	
