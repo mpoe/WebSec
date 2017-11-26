@@ -39,7 +39,9 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="nav-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="dropdown-menu bd-search-results" id="search-results"></div>
                 </form>
-                <button class="btn">Log out</button>
+                <form action ="api/logout.php">
+                <button class="btn" id="btn-logout">Log out</button>
+            </form>
                 <?php
             }
             ?>

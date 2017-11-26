@@ -29,7 +29,7 @@ $user = $stmt->fetchObject();
 		if($friendstmt->fetchObject() == null)
 		{
 			?>
-			<form action="create-friend-request.php" method="post">
+			<form action="api/create-friend-request.php" method="post">
 				<input type="text" name="token" hidden value="<?php echo $token; ?>">
 				<input type="text" name="id" hidden value="<?php echo $user->id; ?>">
 				<input type="submit" value="Add friend">

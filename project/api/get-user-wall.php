@@ -1,13 +1,18 @@
 <?php
 	$userid = $_GET['id'];
 	$userid = htmlspecialchars($userid, ENT_QUOTES, 'UTF-8');
-	include("../include/db.php");
+	include("include/db.php");
 
 	$stmt = $conn->prepare("SELECT * FROM post WHERE postedfrom = :userid");
     $stmt->bindValue(":userid", $userid);
 	$stmt->execute();
 
-
+	if($stmt->fetchObject() == null)
+	{
+		?>
+			<h2>User has no posts</h2>
+		<?php
+	}
 	while($post = $stmt->fetchObject()){
 		$userstmt = $conn->prepare("SELECT avatarname FROM users WHERE id = $post->postedfrom");
 		$userstmt->execute();

@@ -10,7 +10,7 @@
 	$uFrom = $_SESSION['UserID'];
 
 	
-include("/include/token-validation.php");
+include("../include/token-validation.php");
 
 	$stmt = $conn->prepare("CALL CreateFriendReq(:reqto, :reqfrom)");
 	$stmt->bindValue(":reqto",$uToAdd);

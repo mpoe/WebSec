@@ -16,6 +16,11 @@
 										<!-- Needs to be dynamic -->
 		<img class="request-image" src="img/Beaker.jpg">
 		<p><?php echo $user->avatarname; ?> wants to add you as a friend</p>
+		<form action="api/accept-friend-request.php" method="get">
+			<input type="text" name="token" hidden value="<?php echo $token; ?>">
+			<input type="hidden" name="requester-id" value=<?php echo $user->id; ?>>
+			<button class="btn">Accept</button>
+		</form>
 	</div>
 	<?php
 	$count++;

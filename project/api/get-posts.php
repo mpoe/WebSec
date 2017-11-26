@@ -1,11 +1,19 @@
 <?php
 	//session_start();
-
+	
 	$token = $_SESSION['token'];
-	include("./include/db.php");
+	include("include/db.php");
 
 	//Needs to be more clear, needs to be joined with contacts, can do later
-	$stmt = $conn->prepare("SELECT * FROM post WHERE 1=1");
+	$stmt = $conn->prepare("SELECT post.id, post.postdesc, post.postimage, post.postedfrom 
+		FROM post 
+		JOIN contacts
+		ON post.postedfrom=contacts.requestedto OR post.postedfrom=contacts.requestedfrom 
+		WHERE contacts.reqstatusid =5 AND (contacts.requestedfrom = :uid OR contacts.requestedto = :uid2)");
+	//We can be either the sender or receiver of a friendrequest, and we would like to see our own post
+	$stmt->bindValue(":uid", $_SESSION['UserID']);
+	//so let's check for either of the 2
+	$stmt->bindValue(":uid2", $_SESSION['UserID']);
 	$stmt->execute();
 
 	while($post = $stmt->fetchObject()){

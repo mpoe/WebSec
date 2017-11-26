@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 include("include/db.php");
 include("include/token.php");
 
@@ -24,12 +23,13 @@ include("include/header.php");
 			?>
 			<form class="create-post-form" action="api/create-post.php" method="post" enctype="multipart/form-data">
 				<input class="post-input" type="textarea" name="post-data" placeholder="What's on your mind?">
+				<input type="text" name="token" hidden value="<?php echo $token; ?>">
 				<input type="file" value="Select image" name="fileToUpload" id="fileToUpload">
 				<input class="create-post-button" type="submit" name="post" value="post">
 			</form>
 			<?php
 		}
-		include('api/get-posts.php');
+		include('api/get-user-wall.php');
 		?>
 	</div>
 	<div class="container-right container">

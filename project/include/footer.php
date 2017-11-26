@@ -9,7 +9,6 @@
 	$("#nav-search").keyup(function()
 	{
 		
-		var aUserData =[];
 			$.ajax({
 				url: "api/search.php",
 				"method":"get",
@@ -32,20 +31,20 @@
 					}
 		});
 
-		if($("#search-results").is(':empty') || $("#nav-search").val().length == 0 )
+		if($("#search-results").is(':empty') && $("#nav-search").val().length == 0 )
 		{
-			console.log("Here");
-			$("#search-results").empty();
-			$("#search-results").hide();
+			//Not working selector
 		}
-		searchString = $("#nav-search").val();
-		$.get("api/search.php" , function(data){
-
-			
-		});
+		
 		if(!$("#search-results").is(':empty'))
 		{
 			$("#search-results").show();
 		}
+		if($("#search-results").is(':empty'))
+		{
+			$("#search-results").append("<p>No results</p>");
+			$("#search-results").show();
+		}
 	})
+
 </script>
