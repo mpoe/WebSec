@@ -61,8 +61,9 @@ while($post = $stmt->fetchObject()){
 	</div>
 	<?php
 }
-if(!$stmt->fetchObject()){
+if($stmt->fetchObject()){
+} else{
 	echo "<h3>Please add a friend before creating any posts. If you can't find contacts, invite friends and expand your network.</h3>";
-} 
+}
 
 ?>

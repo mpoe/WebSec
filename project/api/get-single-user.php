@@ -35,7 +35,7 @@ $user = $stmt->fetchObject();
 			//This is the logged in user, on his own page, do nothing in this case.
 	}
 	else{
-		$friendstmt = $conn->prepare("SELECT * FROM contacts WHERE requestedto = $curUser AND requestedfrom = $uID AND reqstatusid = 5");
+		$friendstmt = $conn->prepare("SELECT * FROM contacts WHERE (requestedto = $curUser AND requestedfrom = $uID) OR (requestedto = $uID AND requestedfrom = $curUser) AND reqstatusid = 5");
 		$friendstmt->execute();
 		if($friendstmt->fetchObject() == null)
 		{
