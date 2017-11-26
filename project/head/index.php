@@ -18,8 +18,8 @@ and open the template in the editor.
             
             <form class="TopBar_Form"> <!-- Needs form information -->
                 <button class="Login_Btn">Log in</button>
-                <input class="TopBar_Password" placeholder="Password" type="password">
-                <input class="TopBar_Username"  placeholder="Username">
+                <input class="TopBar_Password" placeholder="Password" type="password" autocomplete="off">
+                <input class="TopBar_Username"  placeholder="Username" autocomplete="off">
             </form>
         </div>
         

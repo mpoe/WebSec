@@ -85,7 +85,7 @@ and open the template in the editor.
         /* footer specs */
         height: 43px;
         min-width: 100%;
-        background-color: #146eff;
+        background-color: #f8f9fa;
         opacity: 0.9;
         position: absolute;
         right: 0;
@@ -138,8 +138,8 @@ and open the template in the editor.
         background: rgba(255,255,255,0.9);
         padding: 1%;
         position: absolute;
-        right: 10%;
-        top: 11%;
+        right: 5%;
+        top: 15%;
         /*width: 20%;*/
         border-radius: 5px;
     }
@@ -185,7 +185,7 @@ and open the template in the editor.
         font-size: 16px;
         border-radius: 3px;
         display: block;
-        width: 88%;
+        width: 100%;
         margin-bottom: 10px;
     }
 
@@ -201,8 +201,8 @@ and open the template in the editor.
         background: rgba(255,255,255,0.9);
         padding: 2%;
         position: absolute;
-        top: 11%;
-        left: 10%;
+        top: 15%;
+        left: 5%;
         /*height: 175px;*/
         border-radius: 5px;
     }
@@ -212,7 +212,7 @@ and open the template in the editor.
     }
 
     .Signup_rules{
-        margin-top: 20px;
+        margin-top: 20%;
    /* background: rgba(255,255,255,0.9);
     padding: 1%;
     position: absolute;

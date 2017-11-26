@@ -72,7 +72,7 @@ $(document).ready(function () {
     /* Password validation */
     $("#password").keyup(function(){
 
-        if($(this).val().match('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}')){
+        if($(this).val().match('^(?=.*[a-z])(?=.*[A-Z])(?=.*[#$@!%&*?])[A-Za-z#$@!%&*?]{8,}$')){
             $("#password_format").text("Valid password");
             $("#password_format").css("background-color", "green");
         }

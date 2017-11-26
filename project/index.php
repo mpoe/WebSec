@@ -47,11 +47,11 @@ if(!isset($_SESSION['UserID']))
 
     <button id="button_help" class="help">Help</button>
     <div id="helped" class="help_contain">
-        <p>email format: test@test.com</p>
-        <p>first and last name must not contain numbers</p>
-        <p>phone number format: 12 34 56 78</p>
-        <p>password format: abcdefgh1!A 8</p>
-        <p>(8 characters, 1 special character, 1 digit and 1 uppercase)</p>
+        <p>E-mail format: test@test.com</p>
+        <p>First and last name must not contain numbers</p>
+        <p>Phone number format: 12 34 56 78</p>
+        <p>Password format: Password!</p>
+        <p>(Min. 8 characters, 1 uppercase and 1 special character)</p>
     </div>
     <?php
     include("include/footer.php");
