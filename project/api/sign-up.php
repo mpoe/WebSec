@@ -18,8 +18,14 @@ $avatarname = $_POST['avatarname'];
 
 $mobile = $_POST['phone'];
 $files = $_FILES;
-
-$profileimg = uploadProfileImage($files);
+//Upload the users profile image
+// - returns the images new name
+//If the user is not uploading a new profile image
+if(!isset($_FILES["profileimage"]["name"])){
+	$profileimage = 'person.png';
+}else{
+	$profileimg = uploadProfileImage($file);
+}
 //Set the salt
 $salt = mcrypt_create_iv(16,MCRYPT_DEV_URANDOM);
 $salt = base64_encode($salt);

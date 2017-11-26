@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     /*******************************/
-    /* First name validation */
+    /* Email validation */
     $('#email').keyup(function () {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -19,6 +19,23 @@ $(document).ready(function () {
             $("#email_format").css("background-color", "red");
         }
     });
+
+    /*******************************/
+    /* First name validation */
+    $("#firstname").keyup(function() {
+
+        if($(this).val().match('^[a-zA-Z]{3,16}$')){
+
+            $("#firstname_format").text("Valid name");
+            $("#firstname_format").css("background-color", "green");
+
+        } 
+        else{
+            $("#firstname_format").text("Invalid name");
+            $("#firstname_format").css("background-color", "red");
+        }
+    });
+
 
     /*******************************/
     /* Last name validation */

@@ -14,14 +14,14 @@
 		<?php
 	}
 	while($post = $stmt->fetchObject()){
-		$userstmt = $conn->prepare("SELECT avatarname FROM users WHERE id = $post->postedfrom");
+		$userstmt = $conn->prepare("SELECT avatarname, profileimage FROM users WHERE id = $post->postedfrom");
 		$userstmt->execute();
 		$user = $userstmt->fetchObject();
 		?>
 
 		<div class="post">
 			<div class="user-info">
-				<img src="img/userimg.png"/>
+				<img src=<?php echo '"img/' . $user->avatarname . '"' ?>/>
 				<p class="username"><?php echo $user->avatarname ?></p>
 			</div>
 			<div class="post-info">

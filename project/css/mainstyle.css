@@ -6,213 +6,213 @@ and open the template in the editor.
 /* 
     Created on : Oct 18, 2017, 4:51:16 PM
     Author     : jacda
-*/
+    */
 
-body{
-    margin: 0;
-}
+    body{
+        margin: 0;
+    }
 
-.TopBar{
-    /* top bar specs */
-    height: 43px;
-    min-width: 100%;
-    background-color: #146eff;
-    opacity: 0.9;
-    /* top bar border */
-    border-bottom: black;
-    border-bottom-width: 2px;
-    border-width: 1px;
-    border-bottom-style: solid;
-}
+    .TopBar{
+        /* top bar specs */
+        height: 43px;
+        min-width: 100%;
+        background-color: #146eff;
+        opacity: 0.9;
+        /* top bar border */
+        border-bottom: black;
+        border-bottom-width: 2px;
+        border-width: 1px;
+        border-bottom-style: solid;
+    }
 
-.TopBar_Logo{
-    /* top logo specs */
-    margin-left: 10px;
-    margin-right: 10px;
-    line-height: 40px;
-    font-family: fantasy;
-    color: #fff;
-    font-size: 25px;
-    float: left;
-}
+    .TopBar_Logo{
+        /* top logo specs */
+        margin-left: 10px;
+        margin-right: 10px;
+        line-height: 40px;
+        font-family: fantasy;
+        color: #fff;
+        font-size: 25px;
+        float: left;
+    }
 
-.TopBar_Greet{
-    /* top greet specs */
-    line-height: 45px;
-    font-size: 12px;
-}
+    .TopBar_Greet{
+        /* top greet specs */
+        line-height: 45px;
+        font-size: 12px;
+    }
 
-/* Login Start */
-.TopBar_Form{
-    margin-right: 10px;
-    position: relative;
-    top: -34px;
-}
+    /* Login Start */
+    .TopBar_Form{
+        margin-right: 10px;
+        position: relative;
+        top: -34px;
+    }
 
-.TopBar_Username{
-    float: right;
-    margin-right: 5px;
-}
+    .TopBar_Username{
+        float: right;
+        margin-right: 5px;
+    }
 
-.TopBar_Password{
-    float: right;
-    margin-right: 5px;
-}
+    .TopBar_Password{
+        float: right;
+        margin-right: 5px;
+    }
 
-.Login_Btn, .Logout_Btn{
-    float: right;
-    
-    background-color: #1cbc28; 
-    border: none;
-    color: white;
-    padding: 1px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 3px;
-}
+    .Login_Btn, .Logout_Btn{
+        float: right;
+
+        background-color: #1cbc28; 
+        border: none;
+        color: white;
+        padding: 1px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 3px;
+    }
 
 /*.Logout_Btn{
     position: relative;
     top:-34px;
-}*/
-/* Login END */
+    }*/
+    /* Login END */
 
-/* Footer Start */
+    /* Footer Start */
 
-.footer{
-    /* footer specs */
-    height: 43px;
-    min-width: 100%;
-    background-color: #146eff;
-    opacity: 0.9;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    /* footer border */
-    border-top: black;
-    border-top-width: 2px;
-    border-width: 1px;
-    border-top-style: solid;
-    
-}
+    .footer{
+        /* footer specs */
+        height: 43px;
+        min-width: 100%;
+        background-color: #146eff;
+        opacity: 0.9;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /* footer border */
+        border-top: black;
+        border-top-width: 2px;
+        border-width: 1px;
+        border-top-style: solid;
 
-.footer_logo{
-    float:right;
-    line-height: 40px;
-    margin-right: 26px;
-    font-size: 20px;
-}
+    }
 
-/* footer END */
+    .footer_logo{
+        float:right;
+        line-height: 40px;
+        margin-right: 26px;
+        font-size: 20px;
+    }
 
-/* Background video format */
-video#bgvid { 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background-size: cover;
+    /* footer END */
 
-   overflow: hidden;
-    -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
-}
-/* Background video END */
+    /* Background video format */
+    video#bgvid { 
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        background-size: cover;
 
-/* Signup form */
-.Signup{
-    background: rgba(255,255,255,0.9);
-    padding: 1%;
-    position: absolute;
-    right: 10%;
-    top: 11%;
-    /*width: 20%;*/
-    border-radius: 5px;
-}
+        overflow: hidden;
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+    }
+    /* Background video END */
 
-.regnow form{
-    height:auto;
-}
+    /* Signup form */
+    .Signup{
+        background: rgba(255,255,255,0.9);
+        padding: 1%;
+        position: absolute;
+        right: 10%;
+        top: 11%;
+        /*width: 20%;*/
+        border-radius: 5px;
+    }
 
-.regnow{
-    margin-bottom: 10px;
-}
+    .regnow form{
+        height:auto;
+    }
 
-.Signup_Email{display: block; margin-bottom: 10px; width: 100%;}
-.Signup_Avatarname{display: block; margin-bottom: 10px; width: 100%;}
-.Signup_Firstname{display: block; margin-bottom: 10px; width: 100%;}
-.Signup_Lastname{display: block; margin-bottom: 10px; width: 100%;}
-.Signup_phone{display: block; margin-bottom: 10px; width: 100%;}
-.Signup_Password{display: block; margin-bottom: 10px; width: 100%;}
-.Signup_Repassword{display: block; margin-bottom: 10px; width: 100%;}
+    .regnow{
+        margin-bottom: 10px;
+    }
 
-.Signup_Btn{
-    float: right;
-    background-color: #146eff; 
-    border: none;
-    color: white;
-    padding: 10px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 3px;
-    cursor: pointer;
-}
+    .Signup_Email{display: block; margin-bottom: 10px; width: 100%;}
+    .Signup_Avatarname{display: block; margin-bottom: 10px; width: 100%;}
+    .Signup_Firstname{display: block; margin-bottom: 10px; width: 100%;}
+    .Signup_Lastname{display: block; margin-bottom: 10px; width: 100%;}
+    .Signup_phone{display: block; margin-bottom: 10px; width: 100%;}
+    .Signup_Password{display: block; margin-bottom: 10px; width: 100%;}
+    .Signup_Repassword{display: block; margin-bottom: 10px; width: 100%;}
 
-.Signup_image{
-    display: block;
-    background-color: #146eff; 
-    border: none;
-    color: white;
-    padding:  7px 22px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 3px;
-    display: block;
-    width: 88%;
-    margin-bottom: 10px;
-}
+    .Signup_Btn{
+        float: right;
+        background-color: #146eff; 
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
 
-.haha{
-    display: inline;
-    float: left;
-    line-height: 10px;
-}
+    .Signup_image{
+        display: block;
+        background-color: #146eff; 
+        border: none;
+        color: white;
+        padding:  7px 22px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 3px;
+        display: block;
+        width: 88%;
+        margin-bottom: 10px;
+    }
 
-/* Signup form END */
+    .haha{
+        display: inline;
+        float: left;
+        line-height: 10px;
+    }
 
-.Introduction{
-    background: rgba(255,255,255,0.9);
-    padding: 2%;
-    position: absolute;
-    top: 11%;
-    left: 10%;
-    /*height: 175px;*/
-    border-radius: 5px;
-}
+    /* Signup form END */
 
-.Intro_Txt{
-    font-size: 20px;
-}
+    .Introduction{
+        background: rgba(255,255,255,0.9);
+        padding: 2%;
+        position: absolute;
+        top: 11%;
+        left: 10%;
+        /*height: 175px;*/
+        border-radius: 5px;
+    }
 
-.Signup_rules{
-    margin-top: 20px;
+    .Intro_Txt{
+        font-size: 20px;
+    }
+
+    .Signup_rules{
+        margin-top: 20px;
    /* background: rgba(255,255,255,0.9);
     padding: 1%;
     position: absolute;
@@ -265,5 +265,10 @@ video#bgvid {
 }
 
 button.Signup_Btn:hover{
-        background-color: #146eff;
+    background-color: #146eff;
+}
+
+.login-error{
+    margin: .375rem .75rem;
+    color: tomato;
 }

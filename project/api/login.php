@@ -12,6 +12,17 @@ $uPassword = $_POST['login-password'];
 $uEmail = htmlspecialchars($uEmail, ENT_QUOTES, 'UTF-8');
 $uPassword = htmlspecialchars($uPassword, ENT_QUOTES, 'UTF-8');
 
+//Make sure the usres login credentials are not empty
+if (empty($uEmail) || empty($uPassword) ){
+  $loggedstatus = '[{"status":"error", "type":"807", "descr":"Please enter valid login credentials", "dbdescr": "user entered empty login credentials"}]'; 
+  $_SESSION['loginstatus'] =  $loggedstatus;
+
+  //Forward the user to the home page
+  header('Location: ../index.php');
+  exit; 
+}
+
+
 //Initiate function 
 //Which checks the date given - as a string 
 function checkLastLogin($date) { 
@@ -25,70 +36,86 @@ function checkLastLogin($date) {
   } 
 } 
 
+
 // get the hash and salt from the username  
-$stmt = $conn->prepare("SELECT * FROM users WHERE email=:email"); 
+$stmt = $conn->prepare("SELECT salt FROM users WHERE email=:email"); 
 $stmt->bindValue(':email', $uEmail); 
 $stmt->execute(); 
 //If there is a user with that username we get the hash and salt for that user 
 if($user = $stmt->fetchObject()) 
 {
   $salt = $user->salt; 
-} 
-
-echo $salt . "<br>";
-echo $user->pass . "<br>";
-echo hash("sha256",$uPassword.$salt);
 
 //Now that we have the hash and salt we can check it with the user. 
-$stmt = $conn->prepare("SELECT * FROM users WHERE email=:email AND pass=:password"); 
-$stmt->bindValue(':email', $uEmail); 
-$stmt->bindValue(':password', hash("sha256",$uPassword.$salt)); 
-$stmt->execute(); 
-//If login is correct do 
-if($user = $stmt->fetchObject()){ 
-    //check if user has more than 3 incorrect attempts by convert string to int 
-  if(intval($user->incorrectAttempts)>3){ 
+  $stmt = $conn->prepare("SELECT * FROM users WHERE email=:email AND pass=:password"); 
+  $stmt->bindValue(':email', $uEmail); 
+  $stmt->bindValue(':password', hash("sha256",$uPassword.$salt)); 
+  $stmt->execute(); 
+  //If login is correct do 
+  if($user = $stmt->fetchObject()){ 
+  //check if user has more than 3 incorrect attempts by convert string to int 
+    if(intval($user->incorrectAttempts)>3){ 
         //Since we get a false if a user hasn't waited 
-    if(!checkLastLogin($user->lastAttempt)){ 
-      echo "too many incorrect logins, try later"; 
+      if(!checkLastLogin($user->lastAttempt)){ 
+        $loggedstatus = '[{"status":"error", "type":"805", "descr":"Too many failed attempts, the account has been locked for 5 minutes", "dbdescr": "too many failed login attempts, account is locked"}]'; 
+        $_SESSION['loginstatus'] =  $loggedstatus;
+        
+        //Forward the user to the home page
+        header('Location: ../index.php');
+        exit; 
+      } 
+    } 
+
+    // the user is clear, we can update the database and do whatever we need. 
+    $updStmt = $conn->prepare("UPDATE users SET lastAttempt=:lastAttempt, incorrectAttempts=0 WHERE email=:email"); 
+    $updStmt->bindValue(':lastAttempt',date('Y-m-d H:i:s')); 
+    $updStmt->bindValue(':email', $uEmail); 
+    $updStmt->execute();
+    $_SESSION['UserID'] = $user->id;
+    $_SESSION['avatar_name'] = $user->avatarname;
+    $_SESSION['dJoin'] = $user->djoin;
+    $_SESSION['lName'] = $user->lname;
+    $_SESSION['fname'] = $user->fname;
+    $_SESSION['email'] = $user->email;
+    $_SESSION['ar_id'] = $user->arid;
+    $loggedstatus = '[{"status":"success", "type":"800", "descr":"login success", "dbdescr": "login success"}]'; 
+    //Forward the user to their designated destination
+    forward_user($_POST['login-email'], $_POST['login-password']);
+  } 
+  else{
+    //Password is most likely incorrect, can also be username which prompts us to go here. 
+    //Update the user 
+    $updStmt = $conn->prepare("UPDATE users SET lastAttempt=:lastAttempt, incorrectAttempts = incorrectAttempts+1 WHERE email=:email"); 
+    $updStmt->bindValue(':lastAttempt',date('Y-m-d H:i:s')); 
+    $updStmt->bindValue(':email', $uEmail); 
+    $updStmt->execute(); 
+
+    //Now check if they have too many incorrect attempts. 
+    $userStmt = $conn->prepare("SELECT * FROM users WHERE email=:email"); 
+    $userStmt->bindValue(':email', $uEmail); 
+    $userStmt->execute(); 
+    $userInfo = $userStmt->fetchObject(); 
+
+    if(!checkLastLogin($userInfo->lastAttempt)) 
+    { 
+      $loggedstatus = '[{"status":"error", "type":"803", "descr":"Your login credentials were incorrect", "dbdescr": "user entered incorrect password"}]';
+      $_SESSION['loginstatus'] =  $loggedstatus;
+      
+      //Forward the user to the home page
+      header('Location: ../index.php');
       exit; 
     } 
   } 
-  // the user is clear, we can update the database and do whatever we need. 
-  $updStmt = $conn->prepare("UPDATE users SET lastAttempt=:lastAttempt, incorrectAttempts=0 WHERE email=:email"); 
-  $updStmt->bindValue(':lastAttempt',date('Y-m-d H:i:s')); 
-  $updStmt->bindValue(':email', $uEmail); 
-  $updStmt->execute();
-  $_SESSION['UserID'] = $user->id;
-  $_SESSION['avatar_name'] = $user->avatarname;
-  $_SESSION['dJoin'] = $user->djoin;
-  $_SESSION['lName'] = $user->lname;
-  $_SESSION['fname'] = $user->fname;
-  $_SESSION['email'] = $user->email;
-  $_SESSION['ar_id'] = $user->arid;
 
-} 
-else{
-    //Password is most likely incorrect, can also be username which prompts us to go here. 
-    //Update the user 
-  $updStmt = $conn->prepare("UPDATE users SET lastAttempt=:lastAttempt, incorrectAttempts = incorrectAttempts+1 WHERE email=:email"); 
-  $updStmt->bindValue(':lastAttempt',date('Y-m-d H:i:s')); 
-  $updStmt->bindValue(':email', $uEmail); 
-  $updStmt->execute(); 
 
-    //Now check if they have too many incorrect attempts. 
-  $userStmt = $conn->prepare("SELECT * FROM users WHERE email=:email"); 
-  $userStmt->bindValue(':email', $uEmail); 
-  $userStmt->execute(); 
-  $userInfo = $userStmt->fetchObject(); 
+} else{
+  //Invalid email
+ $loggedstatus =  '[{"status":"error", "type":"801", "descr":"Your login credentials were incorrect", "dbdescr": "user entered incorrect email"}]';
+ $_SESSION['loginstatus'] =  $loggedstatus;
 
-  if(!checkLastLogin($userInfo->lastAttempt)) 
-  { 
-    echo "too many incorrect logins, try later"; 
-    exit; 
-  } 
+  //Forward the user to the home page
+ header('Location: ../index.php');
 } 
 
-//Forward the user to their designated destination
-forward_user($_POST['login-email'], $_POST['login-password']);
+
 ?>

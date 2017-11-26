@@ -15,7 +15,18 @@ $user = $stmt->fetchObject();
 ?>
 <div class="profile-box">
 	<!-- Not dynamic -->
-	<img class="profile-image" src="img/userimg.png"/>
+	<?php if(!isset($user->profileimage))
+	{
+		?>
+		<img class="profile-image" src="img/userimg.png"/>
+		<?php 
+	}
+	else { 
+		?>
+		<img class="profile-image" src=<?php echo '"img/' . $user->profileimage . '"' ?>/>
+		<?php
+	} 
+	?>
 	<p><?php echo $user->avatarname ?></p>
 	<p><?php echo $user->djoin ?></p>
 	<?php

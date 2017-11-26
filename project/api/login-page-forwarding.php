@@ -1,17 +1,8 @@
 <?php
 /*This file is used to forward users on to other parts of the website based on their access rights*/
-
-
 function forward_user($email, $pass){
 
-	//session_start();
-
-
 	$userAccessRight = $_SESSION['ar_id'] ;
-
-	var_dump($_SESSION);
-
-	echo $userAccessRight;
 
 	if($userAccessRight == 7 || $userAccessRight == 9)
 	{
@@ -44,11 +35,13 @@ function forward_user($email, $pass){
 	{
 		/*For normal and unlogged users*/
 		/*Redirect the user to the admin section*/
+		echo "user";
 		header('Location: ../feed.php');
 	}
 	else
 	{
 		/*Possible attack*/
+		echo "go home";
 		header('Location: ../index.php');
 	}
 }

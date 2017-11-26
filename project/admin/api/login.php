@@ -1,6 +1,6 @@
 <?php 
 /*Start a new session*/
-require_once("./include/db.php");
+require_once("../include/db.php");
 
 // GET USERINFO FROM URL 
 $uEmail = $_POST['login-email']; 

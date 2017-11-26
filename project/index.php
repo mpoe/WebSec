@@ -1,5 +1,5 @@
-
 <?php
+session_start();
 if(!isset($_SESSION['UserID']))
 {
     include("include/header.php");
@@ -22,16 +22,16 @@ if(!isset($_SESSION['UserID']))
 
         <div class="Signup">
             <div class="regnow">Register now!</div>
-            <form action="api/sign-up.php" method="post"> <!-- Needs form information -->
-                <input class="Signup_Email" name="email" placeholder="Email address" type="text" tabindex="4" autocomplete="off" id="email">
-                <input class="Signup_Avatarname" name="avatarname" placeholder="Avatar name" type="text" autocomplete="off" id="avatarname"> <!-- needs tabindex -->
-                <input class="Signup_Firstname" name="fname" placeholder="First name" type="text" tabindex="5" autocomplete="off" id="firstname">
-                <input class="Signup_Lastname" name="lname" placeholder="Last name" type="text" tabindex="6" autocomplete="off" id="lastname">
-                <input class="Signup_phone" name="phone" placeholder="Phone number" type="text" autocomplete="off" id="phone">
-                <input class="Signup_Password" name="password1" placeholder="Password" type="password" tabindex="7" autocomplete="off" id="password">
-                <input class="Signup_Repassword" name="password2" placeholder="Re-password" type="password" tabindex="8" autocomplete="off" id="repassword">
-                <input class="Signup_image" name="profileimage" type="file">
-                <button class="Signup_Btn Reg_Btn" tabindex="9">Register</button>
+            <form action="api/sign-up.php" method="post"  enctype="multipart/form-data"> <!-- Needs form information -->
+                <input class="Signup_Email" name="email" placeholder="Email address" type="email" tabindex="4" autocomplete="off" id="email">
+                <input class="Signup_Avatarname" name="avatarname" placeholder="Avatar name" type="text" tabindex="5"  autocomplete="off" id="avatarname"> <!-- needs tabindex -->
+                <input class="Signup_Firstname" name="fname" placeholder="First name" type="text" tabindex="6" autocomplete="off" id="firstname">
+                <input class="Signup_Lastname" name="lname" placeholder="Last name" type="text" tabindex="7" autocomplete="off" id="lastname">
+                <input class="Signup_phone" name="phone" placeholder="Phone number" type="text" tabindex="8"  autocomplete="off" id="phone">
+                <input class="Signup_Password" name="password1" placeholder="Password" type="password" autocomplete="off" tabindex="9" id="password">
+                <input class="Signup_Repassword" name="password2" placeholder="Re-password" type="password" tabindex="10" autocomplete="off" id="repassword">
+                <input class="Signup_image" name="profileimage" type="file" tabindex="11" >
+                <button class="Signup_Btn Reg_Btn" tabindex="12">Register</button>
             </form>
             <div class="Signup_rules">
                 <div class="rule_contain"><p class="format_txt">E-mail:</p> <div class="indicator" id="email_format"></div></div>
@@ -60,4 +60,5 @@ else
 {
     header("Location: feed.php");
 }
+
 ?>

@@ -59,7 +59,6 @@ include("include/footer.php");
 
 <script type="text/javascript">
 	$( document ).ready(function() {
-		console.log("xx");
 		$.get("api/get-single-user.php?id=<?php echo $userID; ?>", function(sData){
 			$(".container-left").append(sData);
 		//Do nothing
