@@ -24,7 +24,7 @@ $files = $_FILES;
 if(!isset($_FILES["profileimage"]["name"])){
 	$profileimage = 'person.png';
 }else{
-	$profileimg = uploadProfileImage($file);
+	$profileimg = uploadProfileImage($files);
 }
 //Set the salt
 $salt = mcrypt_create_iv(16,MCRYPT_DEV_URANDOM);
