@@ -16,6 +16,10 @@ $stmt->bindValue(":uid", $_SESSION['UserID']);
 $stmt->bindValue(":uid2", $_SESSION['UserID']);
 $stmt->execute();
 
+if ($stmt->rowCount() == 0) {
+		echo "<h2>Please add a friend to see posts from them, use the search bar above to find friends, you can see your own posts without friends by going to your wall (search for your avatar name</h2>";
+	} 
+
 while($post = $stmt->fetchObject()){
 	$userstmt = $conn->prepare("SELECT avatarname FROM users WHERE id = $post->postedfrom");
 	$userstmt->execute();
@@ -60,10 +64,6 @@ while($post = $stmt->fetchObject()){
 		</div>
 	</div>
 	<?php
-}
-if($stmt->fetchObject()){
-} else{
-	echo "<h3>Please add a friend before creating any posts. If you can't find contacts, invite friends and expand your network.</h3>";
 }
 
 ?>

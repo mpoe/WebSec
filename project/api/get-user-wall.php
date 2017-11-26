@@ -7,6 +7,10 @@
     $stmt->bindValue(":userid", $userid);
 	$stmt->execute();
 
+	if ($stmt->rowCount() == 0) {
+		echo "<h2>User has no posts</h2>";
+	} 
+
 	while($post = $stmt->fetchObject()){
 		$userstmt = $conn->prepare("SELECT avatarname, profileimage FROM users WHERE id = $post->postedfrom");
 		$userstmt->execute();
