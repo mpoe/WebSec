@@ -17,7 +17,7 @@ $mobile = $_POST['phone'];
 $files = $_FILES;
 
 //Sanitize the registration input
-$regSantized = registerSanitizer($email, $password, $fname, $lname, $avatarname, $avatarname,$mobile);
+$regSantized = registerSanitizer($email, $password, $password2, $fname, $lname, $avatarname, $avatarname,$mobile);
 //If the sanitizer removed any strange text exit the sign-up process and forward the user to the index page
 if($regSantized['dataissafe'] == false ){
 	

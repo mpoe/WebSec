@@ -60,19 +60,19 @@ function loginSanitizer(){
 	$passTampered = compareSanitizedStr($pass, $pass_sanitized);
 
 	/** EMAIL */
-	if(($emailTampered == false)|| ($passTampered == false))) {
+	if(($emailTampered == false)|| ($passTampered == false)) {
 		//echo "<p>data is not safe</p>";
-		$dataIsSafe = false;
-	}  else{
+	$dataIsSafe = false;
+}  else{
 		//echo "<p>data is safe</p>";
-		$dataIsSafe = true;
-	}
+	$dataIsSafe = true;
+}
 
 	 //Push sanitized variables into an array that can be used later
-	$sanitizedLoginDetails['email'] = 	$email_sanitized;
-	$sanitizedLoginDetails['pass'] = 	$pass1_sanitized;
+$sanitizedLoginDetails['email'] = 	$email_sanitized;
+$sanitizedLoginDetails['pass'] = 	$pass1_sanitized;
 
-	return $sanitizedLoginDetails;
+return $sanitizedLoginDetails;
 }
 
 /**************************************************/
