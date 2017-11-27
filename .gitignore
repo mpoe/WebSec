@@ -9,3 +9,4 @@ csrf/
 xss3/
 project/api/test-ip-logger.php
 project/api/sign-up.php
+*.jpg
