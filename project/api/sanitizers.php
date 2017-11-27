@@ -48,12 +48,13 @@ function registerSanitizer($email, $pass1, $pass2, $fname, $lname, $aname, $mobi
 
 /**************************************************/
 /*** Login sanitizer */
-function loginSanitizer(){
+function loginSanitizer($email, $pass){
+	$dataIsSafe = false;
 	 //Create a placeholder for the credentials
 	$sanitizedLoginDetails = [];
 	//Sanitize the variables
 	$email_sanitized = filter_var($email, FILTER_SANITIZE_EMAIL);
-	$pass1_sanitized = filter_var($pass1, FILTER_SANITIZE_STRING);
+	$pass_sanitized = filter_var($pass, FILTER_SANITIZE_STRING);
 
 	//Compare the strings to see if there were any tags that got removed
 	$emailTampered = compareSanitizedStr($email, $email_sanitized);
@@ -62,17 +63,18 @@ function loginSanitizer(){
 	/** EMAIL */
 	if(($emailTampered == false)|| ($passTampered == false)) {
 		//echo "<p>data is not safe</p>";
-	$dataIsSafe = false;
-}  else{
+		$dataIsSafe = false;
+	}  else{
 		//echo "<p>data is safe</p>";
-	$dataIsSafe = true;
-}
+		$dataIsSafe = true;
+	}
 
 	 //Push sanitized variables into an array that can be used later
-$sanitizedLoginDetails['email'] = 	$email_sanitized;
-$sanitizedLoginDetails['pass'] = 	$pass1_sanitized;
+	$sanitizedLoginDetails['login-email'] = 	$email_sanitized;
+	$sanitizedLoginDetails['login-password'] = 	$pass_sanitized;
+	$sanitizedLoginDetails['dataissafe'] = 	$dataIsSafe;
 
-return $sanitizedLoginDetails;
+	return $sanitizedLoginDetails;
 }
 
 /**************************************************/
@@ -127,4 +129,7 @@ function compareSanitizedStr($originalStr, $sanitizedStr) {
 // 	} 
 // 	//Continue with code as usual
 // }
+
+// $logSantized = loginSanitizer("garry@mail.com", "asdA!4");
+// var_dump($logSantized);
 ?>

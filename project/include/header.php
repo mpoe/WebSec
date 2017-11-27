@@ -43,6 +43,8 @@
                             <input class="form-control mr-sm-2 is-invalid" name="login-password" placeholder="Password" type="password" tabindex="2">
                             <?php
                         }
+                        //Remove the login status error notification
+                        unset($_SESSION['loginstatus']);
                     } else{
                          //Show normal inputs
                         ?>

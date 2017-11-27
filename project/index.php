@@ -54,6 +54,18 @@ if(!isset($_SESSION['UserID']))
         <p>(Min. 8 characters, 1 uppercase and 1 special character)</p>
     </div>
     <?php
+
+    if(isset($_SESSION['tamperingdetected'])){
+        ?>
+        <script type="text/javascript">
+            // Alert the user
+            alert("We have detecting possible tampering from your ip");
+        </script>
+        <?php
+        //Remove the login status error notification
+        unset($_SESSION['tamperingdetected']);
+    }
+
     include("include/footer.php");
 }
 else

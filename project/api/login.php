@@ -4,10 +4,24 @@ session_start();
 include("../include/db.php");
 /*Contains a function to forward the user*/
 include('login-page-forwarding.php');
+include ('sanitizers.php');
 
 // GET USERINFO FROM URL 
 $uEmail = $_POST['login-email']; 
 $uPassword = $_POST['login-password'];
+
+//Sanitize the registration input
+$loginSanitizer = registerSanitizer($uEmail, $uPassword);
+//If the sanitizer removed any strange text exit the sign-up process and forward the user to the index page
+if($loginSanitizer['dataissafe'] == false ){
+  $loggedstatus = '[{"status":"error", "type":"809", "descr":"Please stop attempting to attack our site", "dbdescr": "user entered potentially malicious code"}]'; 
+  $_SESSION['loginstatus'] =  $loggedstatus;
+
+  //Forward the user to the home page, alert the user that we have detected xss tampering (This may demotivate and annoy the attack, forcing them to give up)
+  header('Location: ../index.php');
+  exit;
+} 
+
 
 $uEmail = htmlspecialchars($uEmail, ENT_QUOTES, 'UTF-8');
 $uPassword = htmlspecialchars($uPassword, ENT_QUOTES, 'UTF-8');
