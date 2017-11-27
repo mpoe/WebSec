@@ -23,7 +23,7 @@ if($regSantized['dataissafe'] == false ){
 	//Start a session, this session will be used to notify the user that we think they are peforming data tampering
 	session_start();
 	$_SESSION['tamperingdetected'] =  1;
-	
+
 	//Forward the user to the home page, alert the user that we have detected xss tampering (This may demotivate and annoy the attack, forcing them to give up)
 	header('Location: ../index.php');
 	exit;
@@ -114,8 +114,6 @@ else{
 
 }
 
-
-
-
+header('Location: ../index.php');
 
 ?>
