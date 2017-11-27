@@ -11,7 +11,7 @@ $uEmail = $_POST['login-email'];
 $uPassword = $_POST['login-password'];
 
 //Sanitize the registration input
-$loginSanitizer = registerSanitizer($uEmail, $uPassword);
+$loginSanitizer = loginSanitizer($uEmail, $uPassword);
 //If the sanitizer removed any strange text exit the sign-up process and forward the user to the index page
 if($loginSanitizer['dataissafe'] == false ){
   $loggedstatus = '[{"status":"error", "type":"809", "descr":"Please stop attempting to attack our site", "dbdescr": "user entered potentially malicious code"}]'; 
