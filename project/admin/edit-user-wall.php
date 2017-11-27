@@ -3,7 +3,10 @@
 $title = "Admin edit user wall";
 
 include("/include/header.php");
-?>
+require_once('include/functions.php');
+
+if(hasAccess(7)){
+	?>
 
 
 </div>
@@ -77,4 +80,13 @@ include("/include/header.php");
 </div>
 
 
-<?php include "/include/footer.php"; ?>
+<?php include "/include/footer.php";
+
+}else
+{
+	/*Possible attack*/
+	header('Location: ../index.php');
+
+	/*Log that this person is trying to get into the admin section somehow*/
+}
+?>
