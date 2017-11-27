@@ -9,6 +9,7 @@ if($token == $_SESSION['token'])
 }
 else{
 	echo "Failed";
+	header('Location: ../index.php');
 	die();
 }
 

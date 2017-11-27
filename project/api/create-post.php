@@ -3,7 +3,6 @@ session_start();
 include("../include/db.php");
 include("../include/xsrfprot.php");
 $postdesc = $_POST['post-data'];
-
 $postdesc = htmlspecialchars($postdesc, ENT_QUOTES, 'UTF-8');
 
 include("../include/token-validation.php");

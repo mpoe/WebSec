@@ -4,6 +4,7 @@
 	include("include/token-validation.php");
 	$curUser = $_SESSION['UserID'];
 	$requestedFromUser = $_GET['requester-id'];
+	$requestedFromUser = htmlspecialchars($requestedFromUser, ENT_QUOTES, 'UTF-8');
 
 	$stmt = $conn->prepare("UPDATE contacts SET reqstatusid = '5' WHERE contacts.requestedto = :cuid AND contacts.requestedfrom = :ruid");
 	$stmt->bindValue(":cuid", $curUser );

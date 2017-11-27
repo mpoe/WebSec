@@ -4,7 +4,7 @@ session_start();
 include("../include/db.php");
 
 // GET USERINFO FROM URL 
-$uEmail = $_POST['login-email']; 
+$uEmail = $_POST['login-email'];
 $uPassword = $_POST['login-password']; 
 
 echo $uEmail  . "<br>";
