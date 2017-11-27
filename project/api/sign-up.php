@@ -38,29 +38,44 @@ $hash = hash("sha256",$password.$salt);
 
 // Checks for input fields being empty
 if(empty($email) || empty($avatarname) || empty($fname) || empty($lname) || empty($mobile) || empty($password) || empty($password2)){
-	echo 'Make sure to fill out every input! <br>';
+	session_start();
+	$loggedstatus = '[{"status":"error", "type":"701", "descr":"Please fill out all the data", "dbdescr": "user has left out empty inputs"}]'; 
+	$_SESSION['registerstatus'] =  $loggedstatus;
+	echo 'Empty inputs detected';
 }
 else{
 
     //Checks if email is correct format
 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-		echo 'Invalid email format';
+		// echo 'Invalid email format';
+		session_start();
+		$loggedstatus = '[{"status":"error", "type":"703", "descr":"Please fill out all the data correctly", "dbdescr": "invalid email"}]'; 
+		$_SESSION['registerstatus'] =  $loggedstatus;
 	}
 	else{
 
        //Checks if names are valid
 		if(!preg_match('/^[a-zA-Z ]*$/', $fname) || !preg_match('/^[a-zA-Z ]*$/', $lname)){
-			echo'Invalid name format!';
+			// echo'Invalid name format!';
+			session_start();
+			$loggedstatus = '[{"status":"error", "type":"703", "descr":"Please fill out all the data correctly", "dbdescr": "invalid fname"}]'; 
+			$_SESSION['registerstatus'] =  $loggedstatus;
 		} 
 		else{
             // Checks phone number format
 			if(!preg_match('/^(([1-9]\d{0,2}[ ])|([0]\d{1,3}[-]))((\d{2}([ ]\d{2}){2})|(\d{3}([ ]\d{3})*([ ]\d{2})+))$/i', $mobile)){
-				echo'Invalid phone number';
+				// echo'Invalid phone number';
+				session_start();
+				$loggedstatus = '[{"status":"error", "type":"703", "descr":"Please fill out all the data correctly", "dbdescr": "invalid lname"}]'; 
+				$_SESSION['registerstatus'] =  $loggedstatus;
 			}
 			else{
                 // Checks password format
 				if(!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[=?!@&$#^\-])[A-Za-z0-9=?!@&$#^\-]{8,}$/', $password)){
-					echo'Invalid password';
+					// echo'Invalid password';
+					session_start();
+					$loggedstatus = '[{"status":"error", "type":"703", "descr":"Please fill out all the data correctly", "dbdescr": "invalid password"}]'; 
+					$_SESSION['registerstatus'] =  $loggedstatus;
 				}
 				else{
 
@@ -89,11 +104,17 @@ else{
 
 						try{
 							$stmt->execute();
-							echo '{"status":"success"}';
+							// echo '{"status":"success"}';
+							session_start();
+							$loggedstatus = '[{"status":"success", "type":"701", "descr":"The account has been created", "dbdescr": "account created for' .  $email .' "}]'; 
+							$_SESSION['registerstatus'] =  $loggedstatus;
 						}  catch (PDOException $e) {
 							if ($e->errorInfo[1] == 1062) {
       							// duplicate entry, do something else
-								echo "<p>Email address already exists in the system</p>";
+								// echo "<p>Email address already exists in the system</p>";
+								session_start();
+								$loggedstatus = '[{"status":"error", "type":"707", "descr":"That email address is already in use! Please use another email address.", "dbdescr": "duplicate email address already exists on server"}]'; 
+								$_SESSION['registerstatus'] =  $loggedstatus;
 							} else {
       						// an error other than duplicate entry occurred
 							}
@@ -101,7 +122,10 @@ else{
 					}
 					else
 					{
-						echo 'Both password field should be the same! <br>';
+						// echo 'Both password field should be the same! <br>';
+						session_start();
+						$loggedstatus = '[{"status":"error", "type":"705", "descr":"Passwords did not match", "dbdescr": "passwords don not match"}]'; 
+						$_SESSION['registerstatus'] =  $loggedstatus;
 					}
 				}
 

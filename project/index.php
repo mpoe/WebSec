@@ -55,6 +55,7 @@ if(!isset($_SESSION['UserID']))
     </div>
     <?php
 
+    //If there has been tampering by the user, alert them that we know
     if(isset($_SESSION['tamperingdetected'])){
         ?>
         <script type="text/javascript">
@@ -66,7 +67,48 @@ if(!isset($_SESSION['UserID']))
         unset($_SESSION['tamperingdetected']);
     }
 
-    include("include/footer.php");
+    //Notify the the user about the registration
+    if(isset($_SESSION['registerstatus'])){
+
+     //Convert the status into an array
+        $regArray = json_decode($_SESSION['registerstatus']);
+       //Iterate through the array and get the description
+        for($i=0; $i<count($regArray); $i++){
+
+
+            if($regArray[$i]->status == "success"){
+                //Success notification
+                ?>
+                <script type="text/javascript">
+            // Alert the user
+            swal({
+              title: "Success!",
+              icon: "success",
+          });
+      </script>
+      <?php
+  } else{
+    //error notification
+    ?>
+    <script type="text/javascript">
+            // Alert the user
+            swal({
+              title: "Woops something went wrong!",
+              icon: "error",
+          });
+      </script>
+
+      <?php
+  }
+
+        //Print out the error
+  echo '<strong class="login-error">' . $regArray[$i]->descr . '</strong>';
+}
+ //Remove the login status error notification
+unset($_SESSION['registerstatus']);
+}
+
+include("include/footer.php");
 }
 else
 {
