@@ -16,4 +16,6 @@ $stmt = $conn->prepare("CALL CreateFriendReq(:reqto, :reqfrom)");
 $stmt->bindValue(":reqto",$uToAdd);
 $stmt->bindValue(":reqfrom",$uFrom);
 $stmt->execute();
+
+header('Location: ' . $_SESSION["org_referer"]);
 ?>

@@ -2,6 +2,7 @@
 	$userid = $_GET['id'];
 	$userid = htmlspecialchars($userid, ENT_QUOTES, 'UTF-8');
 	include("include/db.php");
+	$token = $_SESSION['token'];
 
 	$stmt = $conn->prepare("SELECT * FROM post WHERE postedfrom = :userid");
     $stmt->bindValue(":userid", $userid);
@@ -28,9 +29,10 @@
 		
 		<div class="comment-section">
 			<!-- add correct folder structure -->
-			<form action="create-comment.php" method="post">
+			<form action="api/create-comment.php" method="post">
 				<img class="comment-image" src="img/userimg.png">
 				<input class="comment-input" type="text" name="comment">
+				<input type="text" name="token" hidden value="<?php echo $token; ?>">
 				<input type="hidden" name="post-id" value=<?php echo $post->id; ?>>
 				<input class="comment-submit" type="submit" name="submit" value="submit">
 			</form>

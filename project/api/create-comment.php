@@ -9,7 +9,6 @@ $postid = $_POST['post-id'];
 
 include("../include/token-validation.php");
 
-
 $isfriends = false;
 
 $friendstmt = $conn->prepare("SELECT postedfrom FROM post WHERE id = :postid");
@@ -19,25 +18,25 @@ $friendstmt->execute();
 //op = original poster
 $op = $friendstmt->fetchObject();
 
+//This is ourselves, we are allowed to post on our own posts
 if($op->postedfrom == $_SESSION['UserID'])
 {
-    echo "It is me, Mario!";
     $stmt = $conn->prepare("CALL CreateComment(:postid, :userid, :commentdesc)");
     $stmt->bindValue(":postid", $postid);
     $stmt->bindValue(":userid", $_SESSION['UserID']);
     $stmt->bindValue(":commentdesc", $commentdesc);
 
     $stmt->execute();
+    header('Location: ' . $_SESSION["org_referer"]);
 }
 
-
-$friendstmt2 = $conn->prepare(" SELECT requestedfrom FROM contacts WHERE requestedto = $op->postedfrom");
+$friendstmt2 = $conn->prepare("SELECT requestedfrom, reqstatusid FROM contacts WHERE requestedto = $op->postedfrom");
 $friendstmt2->execute();
 
 //get all friends from posts author
 while($friend = $friendstmt2->fetchObject())
 {
-    if($friend->requestedfrom == $_SESSION['UserID'])
+    if($friend->requestedfrom == $_SESSION['UserID'] && $friend->reqstatusid == 5 )
     {
         $isfriends = true;
     }
@@ -56,5 +55,5 @@ if($isfriends)
 else{
     echo "not friends";
 }
-
+header('Location: ' . $_SESSION["org_referer"]);
 ?>

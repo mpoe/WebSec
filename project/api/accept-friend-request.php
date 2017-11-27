@@ -10,7 +10,7 @@
 	$stmt->bindValue(":ruid", $requestedFromUser );
 	$stmt->execute();
 
-	header('Location: ../feed.php');
+	header('Location: ' . $_SESSION["org_referer"]);
 	
 
 ?>
