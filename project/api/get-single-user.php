@@ -4,6 +4,7 @@ include("../include/db.php");
 
 //Needs to be sanitized??
 $uID = $_GET['id'];
+$uID = htmlspecialchars($uID, ENT_QUOTES, 'UTF-8');
 $curUser = $_SESSION['UserID'];
 $token = $_SESSION['token'];
 
