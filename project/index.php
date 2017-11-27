@@ -83,32 +83,30 @@ if(!isset($_SESSION['UserID']))
             // Alert the user
             swal({
               title: "Success!",
+              text: <?php echo '"' . $regArray[$i]->descr  .'"'?>,
               icon: "success",
           });
-      </script>
-      <?php
-  } else{
-    //error notification
-    ?>
-    <script type="text/javascript">
+        </script>
+         <?php
+        } else{
+          //error notification
+         ?>
+          <script type="text/javascript">
             // Alert the user
             swal({
               title: "Woops something went wrong!",
+              text: <?php echo '"' . $regArray[$i]->descr .'"'?>,
               icon: "error",
           });
-      </script>
+          </script>
+         <?php
+        }
+    }
+    //Remove the login status error notification
+    unset($_SESSION['registerstatus']);
+    }
 
-      <?php
-  }
-
-        //Print out the error
-  echo '<strong class="login-error">' . $regArray[$i]->descr . '</strong>';
-}
- //Remove the login status error notification
-unset($_SESSION['registerstatus']);
-}
-
-include("include/footer.php");
+    include("include/footer.php");
 }
 else
 {
