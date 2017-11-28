@@ -9,6 +9,7 @@ if(!isset( $_SESSION['UserID'])){
 
 $loggedID = $_SESSION['UserID'];
 $userID = $_GET['id'];
+$userID = htmlspecialchars($userID, ENT_QUOTES, 'UTF-8');
 
 include("include/header.php");
 ?>
