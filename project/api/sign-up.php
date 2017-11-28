@@ -1,9 +1,7 @@
 <?php
-
 include("../include/db.php");
 include ('upload-profile-image.php');
 include ('sanitizers.php');
-
 //get the data
 $email = $_POST['email'];
 //Should we check if passwords match here?
@@ -15,7 +13,6 @@ $lname = $_POST['lname'];
 $avatarname = $_POST['avatarname'];
 $mobile = $_POST['phone'];
 $files = $_FILES;
-
 //Sanitize the registration input
 $regSantized = registerSanitizer($email, $password, $password2, $fname, $lname, $avatarname, $avatarname,$mobile);
 //If the sanitizer removed any strange text exit the sign-up process and forward the user to the index page
@@ -30,7 +27,7 @@ if($regSantized['dataissafe'] == false ){
 } 
 
 //Set the salt
-$salt = mcrypt_create_iv(16,MCRYPT_DEV_URANDOM);
+$salt = password_hash($password, PASSWORD_BCRYPT);
 $salt = base64_encode($salt);
 
 //Hash it
@@ -101,7 +98,6 @@ else{
 						$stmt->bindValue(":avatarname", $avatarname);
 						$stmt->bindValue(":profileimg", $profileimg);
 						$stmt->bindValue(":mobile", $mobile);
-
 						try{
 							$stmt->execute();
 							// echo '{"status":"success"}';
@@ -116,6 +112,7 @@ else{
 								$loggedstatus = '[{"status":"error", "type":"707", "descr":"That email address is already in use! Please use another email address.", "dbdescr": "duplicate email address already exists on server"}]'; 
 								$_SESSION['registerstatus'] =  $loggedstatus;
 							} else {
+								//echo $e->errorInfo[1];
       						// an error other than duplicate entry occurred
 							}
 						}
