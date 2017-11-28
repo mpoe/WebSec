@@ -6,6 +6,7 @@ include("../include/db.php");
 $commentdesc = $_POST['comment'];
 $commentdesc = htmlspecialchars($commentdesc, ENT_QUOTES, 'UTF-8');
 $postid = $_POST['post-id'];
+$postid = htmlspecialchars($postid, ENT_QUOTES, 'UTF-8');
 
 include("../include/token-validation.php");
 
