@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
     <link rel="stylesheet" type="text/css" href="css/wall.css">
+    <link rel="stylesheet" type="text/css" href="css/query.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <title>Avatar Connect</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
