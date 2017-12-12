@@ -9,7 +9,7 @@ $stmt = $conn->prepare("SELECT post.id, post.postdesc, post.postimage, post.post
 	FROM post 
 	JOIN contacts
 	ON post.postedfrom=contacts.requestedto OR post.postedfrom=contacts.requestedfrom 
-	WHERE contacts.reqstatusid =5 AND (contacts.requestedfrom = :uid OR contacts.requestedto = :uid2)");
+	WHERE contacts.reqstatusid =5 AND (contacts.requestedfrom = :uid OR contacts.requestedto = :uid2) ORDER BY post.id DESC");
 	//We can be either the sender or receiver of a friendrequest, and we would like to see our own post
 $stmt->bindValue(":uid", $_SESSION['UserID']);
 	//so let's check for either of the 2
@@ -21,7 +21,7 @@ if ($stmt->rowCount() == 0) {
 	} 
 
 while($post = $stmt->fetchObject()){
-	$userstmt = $conn->prepare("SELECT avatarname FROM users WHERE id = $post->postedfrom");
+	$userstmt = $conn->prepare("SELECT avatarname FROM users WHERE id = $post->postedfrom ORDER BY id DESC");
 	$userstmt->execute();
 	$user = $userstmt->fetchObject();
 	?>
@@ -46,7 +46,7 @@ while($post = $stmt->fetchObject()){
 			</form>
 
 			<?php
-			$stmt2 = $conn->prepare("SELECT * FROM pcomment WHERE postid = $post->id");
+			$stmt2 = $conn->prepare("SELECT * FROM pcomment WHERE postid = $post->id ORDER BY pcomment.dposted DESC");
 			$stmt2->execute();
 			while($comment = $stmt2->fetchObject()){
 				$userstmt2 = $conn->prepare("SELECT avatarname FROM users WHERE id = $comment->userid");

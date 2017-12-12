@@ -4,7 +4,7 @@
 	include("include/db.php");
 	$token = $_SESSION['token'];
 
-	$stmt = $conn->prepare("SELECT * FROM post WHERE postedfrom = :userid");
+	$stmt = $conn->prepare("SELECT * FROM post WHERE postedfrom = :userid ORDER BY post.id DESC");
     $stmt->bindValue(":userid", $userid);
 	$stmt->execute();
 
